@@ -36,7 +36,7 @@
   "devDependencies": {
     "eslint": "^4.17.0",
     "eslint-plugin-node": "^6.0.0",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.0",
     "gulp-nodemon": "^2.2.1",
     "gulp-util": "^3.0.8",
     "swagger-editor": "^3.6.10"
