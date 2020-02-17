@@ -8,7 +8,9 @@ class MongoManager {
     return process.env.MONGODB_URI;
   }
   connect() {
-    return mongoose.connect(this.getMongoUrl());
+    return mongoose
+      .connect(this.getMongoUrl())
+      .catch(error => console.log("An error has occurred"));
   }
 }
 
