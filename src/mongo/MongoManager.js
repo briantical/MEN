@@ -1,13 +1,13 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
+mongoose.set("useNewUrlParser", true);
+mongoose.set("useFindAndModify", false);
 
 class MongoManager {
-  constructor () {
-
-  }
+  constructor() {}
   getMongoUrl() {
     return process.env.MONGODB_URI;
   }
-  connect () {
+  connect() {
     return mongoose.connect(this.getMongoUrl());
   }
 }
