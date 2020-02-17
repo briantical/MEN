@@ -1,11 +1,11 @@
-const winston = require('winston');
-require('winston-mongodb');
-const { mongoManager } = require('./src/mongo/MongoManager');
+const winston = require("winston");
+require("winston-mongodb");
+const { mongoManager } = require("./src/mongo/MongoManager");
 
-const logger = new (winston.Logger)({
+const logger = winston.createLogger({
   transports: [
-    new (winston.transports.MongoDB)({ db: mongoManager.getMongoUrl() }),
-  ],
+    new winston.transports.MongoDB({ db: mongoManager.getMongoUrl() })
+  ]
 });
 
 module.exports = logger;
