@@ -13,7 +13,7 @@ class MongoManager {
     return mongoose
       .connect(this.getMongoUrl())
       .then(() => console.log("Connection to database established"))
-      .catch(error => console.log("An error has occurred"));
+      .catch(error => console.log("An error has occurred: " + error));
   }
 }
 

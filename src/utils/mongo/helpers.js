@@ -11,12 +11,12 @@
  *
  * **/
 
-const symbols = /[&\/\\#,+()$~%.'":*?<>{}]/g;
+const symbols = /[&\\#,+()$~%.'":*?<>{}]/g;
 
 const fieldToSearch = search => fieldName => {
   const field = {};
   const replacedSearch = search.replace(symbols, "\\$&");
-  field[fieldName] = new RegExp(`${replacedSearch}`, 'i');
+  field[fieldName] = new RegExp(`${replacedSearch}`, "i");
   return field;
 };
 
@@ -29,13 +29,14 @@ const fieldToSearch = search => fieldName => {
  * **/
 
 const updateDeepModel = (model, object) => {
-	const keys = Object.keys(object);
-	keys.forEach(key => {
-		model[key] = object[key] instanceof Object && !(object[key] instanceof Date)
-      ? updateDeepModel(model[key], object[key])
-      : object[key]
-	});
-	return model;
+  const keys = Object.keys(object);
+  keys.forEach(key => {
+    model[key] =
+      object[key] instanceof Object && !(object[key] instanceof Date)
+        ? updateDeepModel(model[key], object[key])
+        : object[key];
+  });
+  return model;
 };
 
 module.exports = { fieldToSearch, updateDeepModel };
