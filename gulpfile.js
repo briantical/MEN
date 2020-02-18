@@ -1,4 +1,4 @@
-const { spawn } = require("child_process");
+const { spawn, exec } = require("child_process");
 const gulp = require("gulp");
 const nodemon = require("gulp-nodemon");
 const gutil = require("gulp-util");
@@ -28,13 +28,21 @@ gulp.task("server", () =>
   })
 );
 
-gulp.task("mongo", callback => {
-  const dbProcess = spawn("mongod");
-  dbProcess.stderr.on("data", consoleLog);
-  dbProcess.on("close", code => {
-    consoleLog(`Database was stopped with code ${code}`);
-    callback();
-  });
-});
+function runCommand(command) {
+  return async function(cb) {
+    await exec(command, function(err, stdout, stderr) {
+      console.log(stdout);
+      console.log(stderr);
+      cb(err);
+    });
+  };
+}
+
+gulp.task(
+  "mongo",
+  runCommand(
+    "mongod --port 27017 --replSet rscriteria --dbpath /Users/briantical/data/db"
+  )
+);
 
 gulp.task("run:dev", gulp.series("mongo", "server"));
