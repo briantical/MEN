@@ -40,9 +40,7 @@ function runCommand(command) {
 
 gulp.task(
   "mongo",
-  runCommand(
-    "mongod --port 27017 --replSet rscriteria --dbpath /Users/briantical/data/db"
-  )
+  runCommand("mongod --port 27017 --dbpath /Users/briantical/data/db")
 );
 
 gulp.task("run:dev", gulp.series("mongo", "server"));
