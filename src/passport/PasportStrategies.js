@@ -11,10 +11,10 @@ const { Unauthorized } = require("rest-api-errors");
 class PassportStrategies {
   constructor(config, User) {
     this._User = User;
-    this.google = this.google.bind(this);
     this.local = this.local.bind(this);
-    this.facebook = this.facebook.bind(this);
-    this.instagram = this.instagram.bind(this);
+    // this.google = this.google.bind(this);
+    // this.facebook = this.facebook.bind(this);
+    // this.instagram = this.instagram.bind(this);
   }
 
   local(username, password, done) {
