@@ -1,21 +1,21 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 const schema = new Schema({
   data: {
     type: Buffer,
-    required: [true],
+    required: [true]
   },
   mimetype: {
     type: String,
     required: [true],
-    enum: ['image/gif', 'image/png', 'image/jpeg', 'image/jpg', 'image/bmp', 'image/webp'],
+    enum: ['image/gif', 'image/png', 'image/jpeg', 'image/jpg', 'image/bmp', 'image/webp']
   },
   name: {
     type: String,
-    required: [true],
+    required: [true]
   },
-  encoding: String,
+  encoding: String
 });
 
-module.exports = { schema };
+export default schema;

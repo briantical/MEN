@@ -1,25 +1,23 @@
-const { errorHandler } = require('./error-handler');
-const { authenticate, generateAccessToken } = require('../passport/passport-middleware');
+import errorHandler from './error-handler';
+import { authenticate, generateAccessToken } from '../passport/passport-middleware';
 
-const {
+import {
   sendOne,
   sendList,
   sendCreated,
   sendUpdated,
   sendDeleted,
   sendAccepted,
-  withoutErrors,
-} = require('./requests-helpers');
+  withoutErrors
+} from './requests-helpers';
 
-module.exports = {
-  sendOne,
-  sendList,
-  sendCreated,
-  sendUpdated,
-  sendDeleted,
-  sendAccepted,
-  authenticate,
-  generateAccessToken,
-  withoutErrors,
-  errorHandler,
-};
+export { sendOne } from './requests-helpers';
+export { sendList } from './requests-helpers';
+export { sendCreated } from './requests-helpers';
+export { sendUpdated } from './requests-helpers';
+export { sendDeleted } from './requests-helpers';
+export { sendAccepted } from './requests-helpers';
+export { authenticate };
+export { generateAccessToken };
+export { withoutErrors } from './requests-helpers';
+export { errorHandler };

@@ -10,10 +10,10 @@ const get = require('./get');
         Authorization: Bearer {token}
  **/
 
-module.exports = (models) => {
+export = (models: any) => {
   const api = router();
 
-  api.get('/:_id',authenticate, get(models));
+  api.get('/:_id', authenticate, get(models));
 
   return api;
 };

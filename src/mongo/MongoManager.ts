@@ -1,8 +1,8 @@
-const mongoose = require("mongoose");
-mongoose.set("useNewUrlParser", true);
-mongoose.set("useFindAndModify", false);
-mongoose.set("useCreateIndex", true);
-mongoose.set("useUnifiedTopology", true);
+const mongoose = require('mongoose');
+mongoose.set('useNewUrlParser', true);
+mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
+mongoose.set('useUnifiedTopology', true);
 
 class MongoManager {
   constructor() {}
@@ -12,11 +12,11 @@ class MongoManager {
   connect() {
     return mongoose
       .connect(this.getMongoUrl())
-      .then(() => console.log("Connection to database established"))
-      .catch(error => console.log("An error has occurred: " + error));
+      .then(() => console.log('Connection to database established'))
+      .catch((error: string) => console.log('An error has occurred: ' + error));
   }
 }
 
 const mongoManager = new MongoManager();
 
-module.exports = { mongoManager };
+export default mongoManager;

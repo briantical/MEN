@@ -13,7 +13,7 @@ const update = require('./update');
 
  **/
 
-module.exports = (models) => {
+export = (models: any) => {
   const api = router();
 
   api.put('/my', authenticate, update(models));

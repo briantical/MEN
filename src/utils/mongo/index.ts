@@ -1,3 +1,3 @@
-const { fieldToSearch, updateDeepModel } = require('./helpers');
+import { fieldToSearch, updateDeepModel } from './helpers';
 
-module.exports = { fieldToSearch, updateDeepModel };
+export = { fieldToSearch, updateDeepModel };

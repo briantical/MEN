@@ -1,7 +1,7 @@
-const _ = require('lodash');
-const { sendUpdated } = require('../../middleware/index');
+import _ from 'lodash';
+import { sendUpdated } from '../../middleware/index';
 
-const update = ({ Car }) => async (req, res, next) => {
+const update = ({ Car }: any) => async (req: any, res: any, next: any) => {
   try {
     const userId = req.user.id;
     const { _id } = req.params;
@@ -10,10 +10,9 @@ const update = ({ Car }) => async (req, res, next) => {
 
     await car.save();
     return sendUpdated(res, { car });
-
   } catch (error) {
     next(error);
   }
 };
 
-module.exports = update;
+export default update;

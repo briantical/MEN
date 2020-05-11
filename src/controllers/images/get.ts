@@ -2,12 +2,12 @@ const { isString } = require('lodash');
 
 const get = ({ Image }) => async (req, res, next) => {
   const { _id } = req.params;
-  
+
   if (isString(_id)) {
     res.send(null);
-    return
+    return;
   }
-  
+
   try {
     const image = await Image.findOne({ _id });
     res.contentType(image.mimetype);
@@ -17,4 +17,4 @@ const get = ({ Image }) => async (req, res, next) => {
   }
 };
 
-module.exports = get;
+export = get;

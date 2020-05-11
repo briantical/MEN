@@ -1,9 +1,10 @@
-const _ = require('lodash');
-const { config } = require('../../config');
-const path = require('path');
-const jade = require('jade');
-const nodemailer = require('nodemailer');
-const logger = require('../../logger');
+import _ from 'lodash';
+import path from 'path';
+import jade from 'jade';
+import nodemailer from 'nodemailer';
+
+import logger from '../../logger';
+import config from '../../config';
 
 /**
  * Send email for users
@@ -22,12 +23,17 @@ const logger = require('../../logger');
  * @param {Object} data for template
  * @param {Object} res from api
  */
+
 class EmailSender {
-  constructor(subject, templateName, templateDate) {
+  _subject: string;
+  _templateName: string;
+  _templateDate: any;
+  _transporter: any;
+  constructor(subject: string, templateName: string, templateDate: any) {
     this._subject = subject;
     this._templateName = templateName;
     this._templateDate = templateDate;
-    this._transporter = nodemailer.createTransport(config.mailer);
+    this._transporter = nodemailer.createTransport(config.config.mailer);
     this._sendEmail = this._sendEmail.bind(this);
   }
   /**
@@ -37,21 +43,21 @@ class EmailSender {
    * @param {String}
    * @param {Function}
    */
-  _sendEmail(recipient, callback) {
+  _sendEmail(recipient: any, callback: () => void) {
     const fileName = path.resolve(__dirname, '../../views', `./${this._templateName}.jade`);
 
     const html = jade.renderFile(fileName, {
-      subject: this._subject,
-      otherProperty: this._templateDate,
+      // subject: this._subject,
+      // otherProperty: this._templateDate
     });
     const mailData = {
       html,
-      from: config.mailer.auth.user,
+      from: config.config.mailer.auth.user,
       to: recipient,
-      subject: this._subject,
+      subject: this._subject
     };
-    this._transporter.sendMail(mailData, (error) => {
-      if(!error) {
+    this._transporter.sendMail(mailData, (error: any) => {
+      if (!error) {
         logger.info(`EmailSender [${this._templateName}]`, { error });
       }
       callback();
@@ -62,20 +68,27 @@ class EmailSender {
    *
    * @param [Object] email addresses
    */
-  sendFor(recipients, callback) {
+  sendFor(recipients: any, callback: any) {
     const emails = _.isArray(recipients) ? recipients : [recipients];
-    emails.forEach(email => this._sendEmail(email, callback));
+    emails.forEach((email) => this._sendEmail(email, callback));
   }
 
-  static hrefFor(req, localPath, data, asParams) {
+  static hrefFor(
+    req: { protocol: any; get: (arg0: string) => any },
+    localPath: any,
+    data: { [x: string]: any },
+    asParams: any
+  ) {
     const protocol = process.env.NODE_ENV === 'production' ? 'http' : req.protocol;
     const rootUrl = `${protocol}://${req.get('host')}`;
-    const domainPath = rootUrl.slice(-1) === '/' && rootUrl || `${rootUrl}/`;
-    const dataToPath = !asParams ? key => `/${data[key]}/` : key => `?${key}=${data[key]};`;
+    const domainPath = (rootUrl.slice(-1) === '/' && rootUrl) || `${rootUrl}/`;
+    const dataToPath = !asParams
+      ? (key: string | number) => `/${data[key]}/`
+      : (key: string | number) => `?${key}=${data[key]};`;
     const datePath = data ? Object.keys(data).map(dataToPath).join('') : '';
 
     return `${domainPath}${localPath}${datePath}`;
   }
 }
 
-module.exports = EmailSender;
+export = EmailSender;

@@ -1,10 +1,10 @@
-const { Router: router } = require('express');
-const { authenticate, generateAccessToken } = require('../../middleware');
-const passport = require('passport');
-const signIn = require('./sign-in');
-const signUp = require('./sign-up');
-const signOut = require('./sign-out');
-const changePassword = require('./change-password');
+import { Router as router } from 'express';
+import { authenticate, generateAccessToken } from '../../middleware';
+import passport from 'passport';
+import signIn from './sign-in';
+import signUp from './sign-up';
+import signOut from './sign-out';
+import changePassword from './change-password';
 
 /**
  * Provide Api for Auth
@@ -33,23 +33,22 @@ const changePassword = require('./change-password');
 
  **/
 
-module.exports = (models, { config }) => {
+export = (models: any) => {
   const api = router();
 
-  api.post('/sign-in',
-    passport.authenticate('local', { session: false, scope: [] }),
-    generateAccessToken,
-    signIn);
+  api.post('/sign-in', passport.authenticate('local', { session: false, scope: [] }), generateAccessToken, signIn);
 
-  api.post('/sign-up', signUp(models, { config }),
+  api.post(
+    '/sign-up',
+    signUp(models),
     passport.authenticate('local', { session: false, scope: [] }),
     generateAccessToken,
-    signIn);
+    signIn
+  );
 
   api.post('/sign-out', authenticate, signOut);
 
   api.put('/change-password', authenticate, changePassword(models));
-
 
   return api;
 };

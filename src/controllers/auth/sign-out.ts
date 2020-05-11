@@ -1,8 +1,8 @@
-const { sendAccepted } = require('../../middleware');
+import { sendAccepted } from '../../middleware';
 
-const signOut = (req, res) => {
+const signOut = (req: any, res: any) => {
   req.logOut();
   sendAccepted(res)();
 };
 
-module.exports = signOut;
+export default signOut;

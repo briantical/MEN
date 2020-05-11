@@ -1,33 +1,32 @@
-const _ = require('lodash');
+import _ from 'lodash';
 /**
  * @example
  *        .map(only('_id'))
  * **/
-const only = name => object => _.get(object, name);
+const only = (name: any) => (object: any) => _.get(object, name);
 
 /**
  * @example
  *        .filter(notIn(_id))
  * **/
-const notIn = target => search => !target.includes(search);
+const notIn = (target: string | any[]) => (search: any) => !target.includes(search);
 
 /**
  * @example
  *        .map(only('_id'))
  * **/
-const fieldAs = (field, value) => object => object[field] === value;
+const fieldAs = (field: string | number, value: any) => (object: { [x: string]: any }) => object[field] === value;
 
 /**
  * @example
  *        .map(idToString)
  * **/
-const idToString = id => id && id.toString();
+const idToString = (id: { toString: () => any }) => id && id.toString();
 
 /**
  * @example
  *        .map(idToString)
  * **/
-const includes = (ids, id) => ids.map(idToString).includes(id.toString());
+const includes = (ids: any[], id: { toString: () => any }) => ids.map(idToString).includes(id.toString());
 
-
-module.exports = { only, notIn, fieldAs, idToString, includes };
+export = { only, notIn, fieldAs, idToString, includes };

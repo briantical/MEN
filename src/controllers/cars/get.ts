@@ -1,6 +1,6 @@
-const { sendOne } = require('../../middleware/index');
+import { sendOne } from '../../middleware/index';
 
-const get = ({ Car }) => async (req, res, next) => {
+const get = ({ Car }: any) => async (req: any, res: any, next: (arg0: any) => void) => {
   try {
     const userId = req.user.id;
     const { _id } = req.params;
@@ -11,4 +11,4 @@ const get = ({ Car }) => async (req, res, next) => {
   }
 };
 
-module.exports = get;
+export default get;

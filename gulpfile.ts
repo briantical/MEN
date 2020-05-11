@@ -1,17 +1,17 @@
 const { spawn, exec } = require('child_process');
-const gulp = require('gulp');
-const nodemon = require('gulp-nodemon');
-const gutil = require('gulp-util');
-const path = require('path');
-const fs = require('fs');
-const { config } = require('./config');
+import gulp from 'gulp';
+import nodemon from 'gulp-nodemon';
+import gutil from 'gulp-util';
+import path from 'path';
+import fs from 'fs';
+import config from './config';
 
-const consoleLog = (data) => gutil.log(data.toString().trim());
+const consoleLog = (data: { toString: () => string }) => gutil.log(data.toString().trim());
 
 const toWatch = ['./src', './swagger'];
 
-if (fs.existsSync(config.swaggerDirPath)) {
-  toWatch.push(config.swaggerDirPath);
+if (fs.existsSync(config.config.swaggerDirPath)) {
+  toWatch.push(config.config.swaggerDirPath);
 }
 
 gulp.task('server', () =>
@@ -28,9 +28,9 @@ gulp.task('server', () =>
   })
 );
 
-function runCommand(command) {
-  return async function (cb) {
-    await exec(command, function (err, stdout, stderr) {
+function runCommand(command: string) {
+  return async function (cb: (arg0: any) => void) {
+    await exec(command, function (err: any, stdout: any, stderr: any) {
       console.log(stdout);
       console.log(stderr);
       cb(err);

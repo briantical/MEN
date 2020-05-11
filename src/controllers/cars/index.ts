@@ -1,11 +1,10 @@
-const { Router: router } = require('express');
-const { authenticate } = require('../../middleware');
-const update = require('./update');
-const create = require('./careate');
-const remove = require('./remove');
-const get = require('./get');
-const { list } = require('./list');
-
+import { Router as router } from 'express';
+import { authenticate } from '../../middleware';
+import update from './update';
+import create from './careate';
+import remove from './remove';
+import get from './get';
+import list from './list';
 
 /**
  * Provide Api for Cars
@@ -44,7 +43,7 @@ const { list } = require('./list');
 
  **/
 
-module.exports = (models, { config }) => {
+export = (models: any, { config }: any) => {
   const api = router();
 
   api.get('/', authenticate, list(models, { config }));

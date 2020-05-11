@@ -1,3 +1,3 @@
-const { updateDeep } = require('./object');
+import updateDeep from './object';
 
-module.exports = { updateDeep };
+export = { updateDeep };

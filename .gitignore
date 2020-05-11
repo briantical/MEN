@@ -45,3 +45,5 @@ dump/
 test/integration/db/
 #ENV
 .env
+
+dist/

@@ -1,8 +1,8 @@
-const { sendOne } = require('../../middleware');
+import { sendOne } from '../../middleware';
 
-const signIn = (req, res) => {
+const signIn = (req: any, res: any) => {
   const { token, user } = req;
-  return sendOne(res, { user, token});
+  return sendOne(res, { user, token });
 };
 
-module.exports = signIn;
+export default signIn;

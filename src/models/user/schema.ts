@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const { EMAIL } = require('../../utils/regexes');
+import mongoose from 'mongoose';
+import { EMAIL } from '../../utils/regexes';
 const Schema = mongoose.Schema;
 
 const schema = new Schema({
@@ -8,19 +8,19 @@ const schema = new Schema({
     required: [true],
     unique: true,
     validate: {
-      validator: email => EMAIL.test(email),
-      message: 'Field [email] wrong format.',
-    },
+      validator: (email: string) => EMAIL.test(email),
+      message: 'Field [email] wrong format.'
+    }
   },
   profile: {
     fullName: {
       type: String,
-      required: [true],
+      required: [true]
     },
     avatar: {
-      type: String,
+      type: String
     }
-  },
+  }
 });
 
-module.exports = { schema };
+export default schema;

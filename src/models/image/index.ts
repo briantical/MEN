@@ -1,3 +1,3 @@
-const { Image } = require('./model');
+import Image from './model';
 
-module.exports = { Image };
+export { Image };

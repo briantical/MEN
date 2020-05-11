@@ -1,7 +1,7 @@
-const _ = require('lodash');
-const { sendCreated } = require('../../middleware/index');
+import _ from 'lodash';
+import { sendCreated } from '../../middleware/index';
 
-const create = ({ Car }) => async (req, res, next) => {
+const create = ({ Car }: any) => async (req: any, res: any, next: (arg0: any) => void) => {
   try {
     const userId = req.user.id;
     const car = new Car({ userId });
@@ -9,11 +9,9 @@ const create = ({ Car }) => async (req, res, next) => {
 
     await car.save();
     return sendCreated(res, { car });
-
   } catch (error) {
-
     next(error);
   }
 };
 
-module.exports = create;
+export default create;

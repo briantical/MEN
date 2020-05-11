@@ -1,9 +1,13 @@
-const winston = require('winston');
-require('winston-mongodb');
-const { mongoManager } = require('./src/mongo/MongoManager');
+//logger
+import winston from 'winston';
+import 'winston-mongodb';
+
+const transports: any = winston.transports;
+
+import { mongoManager } from './src/mongo';
 
 const logger = winston.createLogger({
-  transports: [new winston.transports.MongoDB({ db: mongoManager.getMongoUrl() })]
+  transports: [new transports.MongoDB({ db: mongoManager.getMongoUrl() })]
 });
 
-export = logger;
+export default logger;

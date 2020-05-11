@@ -1,27 +1,27 @@
 const express = require('express');
 
-const { errorHandler } = require('../middleware/index');
-const { Image } = require('../models/image');
-const { User } = require('../models/user');
-const { Car } = require('../models/car');
+import { errorHandler } from '../middleware/index';
+import { Image } from '../models/image';
+import { User } from '../models/user';
+import { Car } from '../models/car';
 
-const auth = require('../controllers/auth');
-const images = require('../controllers/images');
-const users = require('../controllers/users');
-const cars = require('../controllers/cars');
+import auth from '../controllers/auth';
+import images from '../controllers/images';
+import users from '../controllers/users';
+import cars from '../controllers/cars';
 
 const models = { User, Car, Image };
 
-const routersInit = config => {
+const routersInit = (config: any) => {
   const router = express();
 
-  router.use('/auth', auth(models, { config }));
-  router.use('/users', users(models, { config }));
+  router.use('/auth', auth(models));
+  router.use('/users', users(models));
   router.use('/cars', cars(models, { config }));
-	router.use('/images', images(models, { config }));
+  router.use('/images', images(models));
 
   router.use(errorHandler);
   return router;
 };
 
-module.exports = routersInit;
+export default routersInit;

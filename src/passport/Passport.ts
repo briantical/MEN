@@ -1,8 +1,8 @@
-const passportNPM = require('passport');
+import passportNPM from 'passport';
 const { Strategy: LocalStrategy } = require('passport-local');
+
 const { User } = require('../models/user');
-const { PassportStrategies } = require('./PasportStrategies');
-const config = require('../../config');
+import PassportStrategies from './PasportStrategies';
 
 /**
  * Provide passport authenticate logic
@@ -13,14 +13,21 @@ const config = require('../../config');
  * **/
 
 class Passport {
-  constructor(config) {
+  _passport: passportNPM.PassportStatic;
+  _strategies: PassportStrategies;
+  constructor() {
     this._passport = passportNPM;
-    this._strategies = new PassportStrategies(config, User);
+    this._strategies = new PassportStrategies(User);
 
-    this._passport.use(new LocalStrategy({
-      usernameField: 'email',
-      passwordField: 'password',
-    }, this._strategies.local));
+    this._passport.use(
+      new LocalStrategy(
+        {
+          usernameField: 'email',
+          passwordField: 'password'
+        },
+        this._strategies.local
+      )
+    );
   }
 
   init() {
@@ -31,6 +38,6 @@ class Passport {
   }
 }
 
-const passport = new Passport(config);
+const passport = new Passport();
 
-module.exports = { passport };
+export default passport;

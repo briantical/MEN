@@ -1,3 +1,3 @@
-const { Car } = require('./model');
+import Car from './model';
 
-module.exports = { Car };
+export { Car };

@@ -1,11 +1,17 @@
 const { APIError, InternalServerError } = require('rest-api-errors');
 const { STATUS_CODES } = require('http');
-const logger = require('../../logger');
+import logger from '../../logger';
 
 // eslint-disable-next-line
-const errorHandler = (err, req, res, next) => {
-  const error = (err.status === 401 ||
-    err instanceof APIError) ? err : new InternalServerError();
+const errorHandler = (
+  err: any,
+  req: any,
+  res: {
+    status: (arg0: number) => { (): any; new (): any; json: { (arg0: { code: any; message: any }): any; new (): any } };
+  },
+  next: any
+) => {
+  const error = err.status === 401 || err instanceof APIError ? err : new InternalServerError();
 
   if (process.env.NODE_ENV !== 'production') {
     // eslint-disable-next-line
@@ -21,12 +27,10 @@ const errorHandler = (err, req, res, next) => {
 
   logger.info('API error', { error: err });
 
-  return res
-    .status(error.status || 500)
-    .json({
-      code: error.code || 500,
-      message: error.message || STATUS_CODES[error.status],
-    });
+  return res.status(error.status || 500).json({
+    code: error.code || 500,
+    message: error.message || STATUS_CODES[error.status]
+  });
 };
 
-module.exports = { errorHandler };
+export default errorHandler;

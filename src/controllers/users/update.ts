@@ -1,8 +1,12 @@
-const _ = require('lodash');
-const { sendOne } = require('../../middleware/index');
+import _ from 'lodash';
+import { sendOne } from '../../middleware/index';
 const { MethodNotAllowed } = require('rest-api-errors');
 
-const signIn = ({ User }) => async (req, res, next) => {
+const signIn = ({ User }: any) => async (
+  req: { user: { id: any }; body: { email: any } },
+  res: any,
+  next: (arg0: any) => void
+) => {
   try {
     const user = await User.findById(req.user.id);
     const { email } = req.body;
@@ -10,15 +14,14 @@ const signIn = ({ User }) => async (req, res, next) => {
       throw new MethodNotAllowed(405, 'Permission denied');
     }
     _.extend(user, {
-      email: email,
+      email: email
     });
 
     await user.save();
     return sendOne(res, { user });
-
   } catch (error) {
     next(error);
   }
 };
 
-module.exports = signIn;
+export = signIn;

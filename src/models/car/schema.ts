@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 const ObjectId = Schema.Types.ObjectId;
 
@@ -6,39 +6,41 @@ const schema = new Schema({
   userId: {
     type: ObjectId,
     ref: 'User',
-    required: [true],
+    required: [true]
   },
   manufacture: {
     type: String,
-    required: [true],
+    required: [true]
   },
   model: {
     type: String,
-    required: [true],
+    required: [true]
   },
-  connectors: [{
-    type: String,
-    required: [true],
-    enum: ['Type2', 'CCS']
-  }],
+  connectors: [
+    {
+      type: String,
+      required: [true],
+      enum: ['Type2', 'CCS']
+    }
+  ],
   batteryCapacity: {
     type: Number,
-    required: [true],
+    required: [true]
   },
   transform: {
     type: String,
-    required: [true],
+    required: [true]
   },
   // cords definition in mongo db
-	location: {
-		type: {
-			type: String,
-			default: 'Point'
-		},
-		coordinates: [Number]
-	},
+  location: {
+    type: {
+      type: String,
+      default: 'Point'
+    },
+    coordinates: [Number]
+  }
 });
 // create def for cords
-schema.index({ "location": "2dsphere" });
+schema.index({ location: '2dsphere' });
 
-module.exports = { schema };
+export default schema;

@@ -1,3 +1,3 @@
-const { parseFormDataBody, queryToObject, onlyDefined, pickFieldsFilterFor } = require('./helpers');
+import { parseFormDataBody, queryToObject, onlyDefined, pickFieldsFilterFor } from './helpers';
 
-module.exports = { parseFormDataBody, queryToObject, onlyDefined, pickFieldsFilterFor };
+export { parseFormDataBody, queryToObject, onlyDefined, pickFieldsFilterFor };

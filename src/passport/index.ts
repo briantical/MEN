@@ -1,3 +1,1 @@
-const { passport } = require('./Passport');
-
-module.exports = { passport };
+export { default as passport } from './Passport';
