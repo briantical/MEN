@@ -20,7 +20,7 @@ const errorHandler = (
     console.log('-----> Unknown server error...');
     // todo: comment here for production
     // eslint-disable-next-line
-    console.log(err);
+    console.log('Error Handler: ' + err);
   }
 
   if (['UserExistsError', 'ValidationError'].includes(err.name)) {

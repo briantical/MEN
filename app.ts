@@ -4,8 +4,6 @@ import logger from 'morgan';
 import fs from 'fs';
 import cookieParser from 'cookie-parser';
 
-// require('./typings/index');
-
 import { config } from 'dotenv';
 config();
 

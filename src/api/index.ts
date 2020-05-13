@@ -1,6 +1,6 @@
 const express = require('express');
 
-import { errorHandler } from '../middleware/index';
+import { errorHandler } from '../middleware';
 import { Image } from '../models/image';
 import { User } from '../models/user';
 import { Car } from '../models/car';
