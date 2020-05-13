@@ -3,11 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
-    "dev": "./node_modules/.bin/gulp run:dev",
+    "start": "tsc && node ./dist/bin/www.js",
+    "dev": "ts-node ./node_modules/.bin/gulp run:dev",
     "mongo": "./node_modules/.bin/gulp mongo",
     "lint": "eslint ./src "
   },
+  "types": "./src/typings/index.d.ts",
   "dependencies": {
     "@types/body-parser": "^1.19.0",
     "@types/cookie-parser": "^1.4.2",
@@ -51,11 +52,13 @@
     "swagger-express-mw": "^0.7.0",
     "swagger-merger": "^1.4.3",
     "swagger-ui-express": "^4.0.1",
+    "typescript": "^3.8.3",
     "winston": "^3.2.1",
     "winston-mongodb": "^5.0.1",
     "yamljs": "^0.3.0"
   },
   "devDependencies": {
+    "@types/debug": "^4.1.5",
     "@types/gulp-nodemon": "0.0.32",
     "@types/gulp-util": "^3.0.34",
     "eslint": "^4.17.0",
@@ -63,7 +66,8 @@
     "gulp": "^4.0.0",
     "gulp-nodemon": "^2.5.0",
     "gulp-util": "^3.0.8",
-    "swagger-editor": "^3.6.10"
+    "swagger-editor": "^3.6.10",
+    "ts-node-dev": "^1.0.0-pre.44"
   },
   "engines": {
     "node": ">=9.0.0"

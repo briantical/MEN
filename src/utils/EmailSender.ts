@@ -33,7 +33,7 @@ class EmailSender {
     this._subject = subject;
     this._templateName = templateName;
     this._templateDate = templateDate;
-    this._transporter = nodemailer.createTransport(config.config.mailer);
+    this._transporter = nodemailer.createTransport();
     this._sendEmail = this._sendEmail.bind(this);
   }
   /**
@@ -52,7 +52,7 @@ class EmailSender {
     });
     const mailData = {
       html,
-      from: config.config.mailer.auth.user,
+      from: 'userxxx',
       to: recipient,
       subject: this._subject
     };

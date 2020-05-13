@@ -1,6 +1,6 @@
 const { isString } = require('lodash');
 
-const get = ({ Image }) => async (req, res, next) => {
+const get = ({ Image }: any) => async (req: any, res: any, next: any) => {
   const { _id } = req.params;
 
   if (isString(_id)) {

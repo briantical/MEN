@@ -1,5 +1,13 @@
 import path from 'path';
 
+declare global {
+  namespace NodeJS {
+    interface ProcessEnv {
+      SECRET_TOKEN: 'developmentproduction';
+    }
+  }
+}
+
 export = {
   bodyLimit: '100kb',
   passport: {

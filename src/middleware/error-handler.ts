@@ -12,6 +12,8 @@ const errorHandler = (
   next: any
 ) => {
   const error = err.status === 401 || err instanceof APIError ? err : new InternalServerError();
+  console.log(req);
+  console.log(next);
 
   if (process.env.NODE_ENV !== 'production') {
     // eslint-disable-next-line

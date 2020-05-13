@@ -7,7 +7,8 @@ mongoose.set('useUnifiedTopology', true);
 class MongoManager {
   constructor() {}
   getMongoUrl() {
-    return process.env.MONGODB_URI;
+    // return process.env.MONGODB_URI;
+    return 'mongodb://localhost:27017/coronavirus';
   }
   connect() {
     return mongoose

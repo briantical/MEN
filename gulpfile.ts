@@ -16,7 +16,7 @@ if (fs.existsSync(config.config.swaggerDirPath)) {
 
 gulp.task('server', () =>
   nodemon({
-    script: './bin/www',
+    script: './bin/www.ts',
     watch: toWatch,
     ext: 'js yaml',
     ignore: ['build/**'],

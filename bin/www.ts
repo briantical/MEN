@@ -4,15 +4,19 @@
  * Module dependencies.
  */
 
-var app = require('../app');
+// var app = require('../app');
 var debug = require('debug')('men:server');
-var http = require('http');
+// var http = require('http');
+
+import app from '../app';
+import http from 'http';
+// import debug from 'debug'('men:server')
 
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3000');
+var port: number | boolean | string = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
 /**
@@ -34,7 +38,7 @@ server.on('listening', onListening);
  * Normalize a port into a number, string, or false.
  */
 
-function normalizePort(val: any) {
+function normalizePort(val: string) {
   var port = parseInt(val, 10);
 
   if (isNaN(port)) {
@@ -82,6 +86,8 @@ function onError(error: any) {
 
 function onListening() {
   var addr = server.address();
-  var bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port;
-  debug('Listening on ' + bind);
+  if (addr !== null) {
+    var bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port;
+    debug('Listening on ' + bind);
+  }
 }

@@ -10,6 +10,7 @@ export const authenticate = (req: any, res: any, next: any) => {
 
 export const generateAccessToken = (req: any, res: any, next: () => void) => {
   req.token = req.token || {};
+  console.log(res);
   req.token = jwt.sign(
     {
       id: req.user.id

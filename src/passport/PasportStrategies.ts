@@ -24,7 +24,9 @@ class PassportStrategies {
       .findOne({ email: username })
       .then((user: { authenticate: (arg0: any, arg1: (err: any, userData: any) => any) => any }) =>
         user
-          ? user.authenticate(password, (err: any, userData: any) => (userData ? done(null, user) : done(error, false)))
+          ? user.authenticate(password, (error: any, userData: any) =>
+              userData ? done(null, user) : done(error, false)
+            )
           : done(error, false)
       )
       .catch(done);
