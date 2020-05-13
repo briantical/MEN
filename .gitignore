@@ -44,6 +44,6 @@ jspm_packages
 dump/
 test/integration/db/
 #ENV
-.env
+#.env
 
 dist/

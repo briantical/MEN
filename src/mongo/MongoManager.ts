@@ -7,12 +7,14 @@ mongoose.set('useUnifiedTopology', true);
 class MongoManager {
   constructor() {}
   getMongoUrl() {
-    // return process.env.MONGODB_URI;
-    return 'mongodb://localhost:27017/coronavirus';
+    return process.env.MONGODB_URI;
   }
   connect() {
     return mongoose
-      .connect(this.getMongoUrl())
+      .connect(this.getMongoUrl(), {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+      })
       .then(() => console.log('Connection to database established'))
       .catch((error: string) => console.log('An error has occurred: ' + error));
   }

@@ -6952,15 +6952,15 @@
       }
     },
     "mongoose": {
-      "version": "5.9.0",
-      "resolved": "https://registry.npmjs.org/mongoose/-/mongoose-5.9.0.tgz",
-      "integrity": "sha512-vAoQC6RAX5NqXX+H0WKRsvI0gUj3OhFwsu7JHKwsLQ3cNvE7ZfpeG5aDBvbx9XaW0a+Z2ZqysQpktJhSIzLKtg==",
+      "version": "5.9.13",
+      "resolved": "https://registry.npmjs.org/mongoose/-/mongoose-5.9.13.tgz",
+      "integrity": "sha512-MsFdJAaCTVbDA3gYskUEpUN1kThL7sp4zh8N9rGt0+9vYMn28q92NLK90vGssM9qjOGWp8HqLeT1fBgfMZDnKA==",
       "requires": {
-        "bson": "~1.1.1",
+        "bson": "^1.1.4",
         "kareem": "2.3.1",
-        "mongodb": "3.5.3",
+        "mongodb": "3.5.7",
         "mongoose-legacy-pluralize": "1.0.2",
-        "mpath": "0.6.0",
+        "mpath": "0.7.0",
         "mquery": "3.2.2",
         "ms": "2.1.2",
         "regexp-clone": "1.0.0",
@@ -6969,6 +6969,24 @@
         "sliced": "1.0.1"
       },
       "dependencies": {
+        "bson": {
+          "version": "1.1.4",
+          "resolved": "https://registry.npmjs.org/bson/-/bson-1.1.4.tgz",
+          "integrity": "sha512-S/yKGU1syOMzO86+dGpg2qGoDL0zvzcb262G+gqEy6TgP6rt6z6qxSFX/8X6vLC91P7G7C3nLs0+bvDzmvBA3Q=="
+        },
+        "mongodb": {
+          "version": "3.5.7",
+          "resolved": "https://registry.npmjs.org/mongodb/-/mongodb-3.5.7.tgz",
+          "integrity": "sha512-lMtleRT+vIgY/JhhTn1nyGwnSMmJkJELp+4ZbrjctrnBxuLbj6rmLuJFz8W2xUzUqWmqoyVxJLYuC58ZKpcTYQ==",
+          "requires": {
+            "bl": "^2.2.0",
+            "bson": "^1.1.4",
+            "denque": "^1.4.1",
+            "require_optional": "^1.0.1",
+            "safe-buffer": "^5.1.2",
+            "saslprep": "^1.0.0"
+          }
+        },
         "ms": {
           "version": "2.1.2",
           "resolved": "https://registry.npmjs.org/ms/-/ms-2.1.2.tgz",
@@ -6999,9 +7017,9 @@
       }
     },
     "mpath": {
-      "version": "0.6.0",
-      "resolved": "https://registry.npmjs.org/mpath/-/mpath-0.6.0.tgz",
-      "integrity": "sha512-i75qh79MJ5Xo/sbhxrDrPSEG0H/mr1kcZXJ8dH6URU5jD/knFxCVqVC/gVSW7GIXL/9hHWlT9haLbCXWOll3qw=="
+      "version": "0.7.0",
+      "resolved": "https://registry.npmjs.org/mpath/-/mpath-0.7.0.tgz",
+      "integrity": "sha512-Aiq04hILxhz1L+f7sjGyn7IxYzWm1zLNNXcfhDtx04kZ2Gk7uvFdgZ8ts1cWa/6d0TQmag2yR8zSGZUmp0tFNg=="
     },
     "mquery": {
       "version": "3.2.2",
@@ -7647,29 +7665,20 @@
       }
     },
     "passport-local-mongoose": {
-      "version": "4.5.0",
-      "resolved": "https://registry.npmjs.org/passport-local-mongoose/-/passport-local-mongoose-4.5.0.tgz",
-      "integrity": "sha512-fd5dUdTcN37DA+CCL/7kGQ57ACs6NXyuNmWjrTj4kvTOFa7SA+msEYPYwpgwbc3Nc+4RUeMtEQW4fPMx7nDObQ==",
+      "version": "6.0.1",
+      "resolved": "https://registry.npmjs.org/passport-local-mongoose/-/passport-local-mongoose-6.0.1.tgz",
+      "integrity": "sha512-Jc/ImrVnG7o7aTIqrAznt2CxVxy5M2gAxc3erVZyPVUVfiwgvrhlzA9c5fswValA12H2C9mm1AjqGDz+491TDg==",
       "requires": {
-        "debug": "^3.1.0",
         "generaterr": "^1.5.0",
         "passport-local": "^1.0.0",
-        "scmp": "^2.0.0",
-        "semver": "^5.4.1"
+        "scmp": "^2.1.0",
+        "semver": "^7.1.1"
       },
       "dependencies": {
-        "debug": {
-          "version": "3.2.6",
-          "resolved": "https://registry.npmjs.org/debug/-/debug-3.2.6.tgz",
-          "integrity": "sha512-mel+jf7nrtEl5Pn1Qx46zARXKDpBbvzezse7p7LqINmdoIk8PYP5SySaxEmYv6TZ0JyEKA1hsCId6DIhgITtWQ==",
-          "requires": {
-            "ms": "^2.1.1"
-          }
-        },
-        "ms": {
-          "version": "2.1.2",
-          "resolved": "https://registry.npmjs.org/ms/-/ms-2.1.2.tgz",
-          "integrity": "sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w=="
+        "semver": {
+          "version": "7.3.2",
+          "resolved": "https://registry.npmjs.org/semver/-/semver-7.3.2.tgz",
+          "integrity": "sha512-OrOb32TeeambH6UrhtShmF7CRDqhL6/5XpPNp2DuRH6+9QLw/orhp72j87v8Qa1ScDkvrrBNpZcDejAirJmfXQ=="
         }
       }
     },

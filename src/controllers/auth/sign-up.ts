@@ -8,7 +8,6 @@ const signUp = ({ User }: any) => (req: any, res: any, next: any) => {
   if (!PASSWORD.test(password)) {
     return next(new NotAcceptable(406, 'Password is in wrong format.'));
   }
-  console.log(res);
 
   const user = new User({
     email: email,
