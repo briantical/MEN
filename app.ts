@@ -17,7 +17,6 @@ import myconfig from './config';
 import api from './src/api';
 import { passport } from './src/passport';
 import { mongoManager } from './src/mongo';
-import onAppStart from './on-start';
 
 const app = express();
 mongoManager.connect();
@@ -51,8 +50,5 @@ if (!fs.existsSync(outputSwaggerDir)) {
 swaggerMerger({ input: myconfig.config.swaggerFilePath, output: swaggerBuildFilePath });
 const swaggerDocument = YAML.load(swaggerBuildFilePath);
 app.use('/api/v1/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-
-// on App start
-onAppStart();
 
 export default app;
